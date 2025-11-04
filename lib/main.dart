@@ -4,19 +4,19 @@ import 'dart:async';
 import 'dart:html' as html;
 
 void main() {
-  runApp(const MultiplicationGame());
+  runApp(const SubtractionGame());
 }
 
-class MultiplicationGame extends StatelessWidget {
-  const MultiplicationGame({super.key});
+class SubtractionGame extends StatelessWidget {
+  const SubtractionGame({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Avatar Math Masters',
+      title: 'Dora Subtraction Adventure',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'Roboto',
+        fontFamily: 'ComicNeue',
       ),
       home: const WelcomeScreen(),
       debugShowCheckedModeBanner: false,
@@ -24,7 +24,7 @@ class MultiplicationGame extends StatelessWidget {
   }
 }
 
-// Welcome Screen with Avatar Popup
+// Welcome Screen
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -53,34 +53,35 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF1a2a6c),
-              Color(0xFFb21f1f),
-              Color(0xFFfdbb2d),
+              Color(0xFF4A90E2), // Dora's shirt blue
+              Color(0xFFF8E71C), // Dora's hair yellow
+              Color(0xFF7ED321), // Green from backpack
             ],
           ),
         ),
         child: Stack(
           children: [
+            // Background Characters
             if (!isMobile) ...[
               Positioned(
-                top: isDesktop ? 50 : 30,
-                right: isDesktop ? 50 : 30,
-                child: _buildElementBadge('assets/air_symbol.jpg', isDesktop ? 80 : 60),
+                top: 50,
+                left: 50,
+                child: _buildCharacterBadge('assets/dora_smiling.png', 100),
               ),
               Positioned(
-                bottom: isDesktop ? 100 : 80,
-                left: isDesktop ? 50 : 30,
-                child: _buildElementBadge('assets/water_symbol.jpg', isDesktop ? 80 : 60),
+                bottom: 100,
+                right: 50,
+                child: _buildCharacterBadge('assets/boots.png', 80),
               ),
               Positioned(
-                top: isDesktop ? 200 : 150,
-                left: isDesktop ? 100 : 80,
-                child: _buildElementBadge('assets/earth_symbol.jpg', isDesktop ? 80 : 60),
+                top: 200,
+                right: 100,
+                child: _buildCharacterBadge('assets/backpack.png', 70),
               ),
               Positioned(
-                bottom: isDesktop ? 200 : 150,
-                right: isDesktop ? 100 : 80,
-                child: _buildElementBadge('assets/fire_symbol.jpg', isDesktop ? 80 : 60),
+                bottom: 200,
+                left: 100,
+                child: _buildCharacterBadge('assets/map.png', 60),
               ),
             ],
 
@@ -95,19 +96,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     borderRadius: BorderRadius.circular(30),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
+                        color: Colors.orange.withOpacity(0.4),
                         blurRadius: 30,
                         spreadRadius: 5,
                       ),
                     ],
                     border: Border.all(
-                      color: const Color(0xFF8B4513),
-                      width: 3,
+                      color: const Color(0xFF4A90E2),
+                      width: 4,
                     ),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      // Title with Dora Style
                       Stack(
                         alignment: Alignment.center,
                         children: [
@@ -119,28 +121,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [
-                                  Color(0xFF1a2a6c),
-                                  Color(0xFFb21f1f),
-                                  Color(0xFFfdbb2d),
+                                  Color(0xFF4A90E2),
+                                  Color(0xFFF8E71C),
+                                  Color(0xFF7ED321),
                                 ],
                               ),
                               borderRadius: BorderRadius.circular(50),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.blue.withOpacity(0.5),
+                                  color: Colors.orange.withOpacity(0.5),
                                   blurRadius: 20,
                                   spreadRadius: 5,
                                 ),
                               ],
                             ),
                             child: Text(
-                              'AVATAR MATH MASTERS',
+                              'DORA SUBTRACTION ADVENTURE',
                               style: TextStyle(
                                 fontSize: isDesktop ? 42 : isTablet ? 36 : 28,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
-                                fontFamily: 'Poppins',
-                                letterSpacing: 2,
+                                fontFamily: 'ComicNeue',
+                                letterSpacing: 1.5,
                                 shadows: [
                                   const Shadow(
                                     blurRadius: 10,
@@ -157,43 +159,44 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                       SizedBox(height: isMobile ? 20 : 40),
 
+                      // Main Dora Image
                       Container(
-                        width: isDesktop ? 300 : isTablet ? 250 : 200,
-                        height: isDesktop ? 400 : isTablet ? 333 : 266,
+                        width: isDesktop ? 350 : isTablet ? 280 : 220,
+                        height: isDesktop ? 350 : isTablet ? 280 : 220,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(25),
                           border: Border.all(
-                            color: const Color(0xFF8B4513),
+                            color: const Color(0xFF4A90E2),
                             width: 4,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
+                              color: Colors.orange.withOpacity(0.3),
                               blurRadius: 15,
                               spreadRadius: 3,
                             ),
                           ],
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(20),
                           child: Image.asset(
-                            'assets/avatar_main.jpg',
+                            'assets/dora_main.png',
                             fit: BoxFit.cover,
                             errorBuilder: (ctx, err, st) => Container(
-                              color: const Color(0xFFE0F7FA),
+                              color: const Color(0xFFE8F4FF),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(Icons.auto_awesome, 
-                                      size: isMobile ? 40 : 80, 
-                                      color: const Color(0xFF1a2a6c)),
+                                  Icon(Icons.explore, 
+                                      size: isMobile ? 60 : 100, 
+                                      color: const Color(0xFF4A90E2)),
                                   SizedBox(height: isMobile ? 10 : 20),
-                                  const Text(
-                                    'Avatar Aang',
+                                  Text(
+                                    'Dora the Explorer\n350x350px',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontSize: 18,
-                                      color: Color(0xFF1a2a6c),
+                                      fontSize: isMobile ? 14 : 18,
+                                      color: const Color(0xFF4A90E2),
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -206,12 +209,64 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                       SizedBox(height: isMobile ? 20 : 40),
 
+                      // Adventure Info
+                      Container(
+                        padding: EdgeInsets.all(isMobile ? 16 : 24),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFFE8F4FF), Color(0xFFF0FFE8)],
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: const Color(0xFF7ED321), width: 3),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.emoji_events, color: Color(0xFFF8E71C), size: 30),
+                                SizedBox(width: 10),
+                                Text(
+                                  'ADVENTURE GUIDE',
+                                  style: TextStyle(
+                                    fontSize: isMobile ? 20 : 24,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF4A90E2),
+                                    fontFamily: 'ComicNeue',
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Icon(Icons.emoji_events, color: Color(0xFFF8E71C), size: 30),
+                              ],
+                            ),
+                            SizedBox(height: 15),
+                            Text(
+                              '🎒 Solve 10 subtraction problems per level\n'
+                              '⏰ Beat the timer to advance\n'
+                              '🏆 Get 7+ correct to unlock next grade\n'
+                              '🌟 30 grades to master subtraction!\n'
+                              '📚 No negative numbers - always positive!',
+                              style: TextStyle(
+                                fontSize: isMobile ? 16 : 18,
+                                color: Color(0xFF4A90E2),
+                                fontFamily: 'ComicNeue',
+                                height: 1.6,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(height: isMobile ? 20 : 40),
+
+                      // Start Adventure Button
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFb21f1f).withOpacity(0.5),
+                              color: const Color(0xFF7ED321).withOpacity(0.5),
                               blurRadius: 20,
                               spreadRadius: 5,
                             ),
@@ -221,11 +276,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           onPressed: () {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => const GradeSelectionScreen()),
+                              MaterialPageRoute(builder: (context) => GradeSelectionScreen()),
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFb21f1f),
+                            backgroundColor: const Color(0xFF7ED321),
                             padding: EdgeInsets.symmetric(
                               horizontal: isMobile ? 40 : 60,
                               vertical: isMobile ? 16 : 20,
@@ -243,12 +298,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                   color: Colors.white),
                               SizedBox(width: isMobile ? 10 : 15),
                               Text(
-                                'BEGIN YOUR JOURNEY',
+                                'START ADVENTURE',
                                 style: TextStyle(
                                   fontSize: isMobile ? 16 : 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  fontFamily: 'Poppins',
+                                  fontFamily: 'ComicNeue',
                                   letterSpacing: 1,
                                 ),
                               ),
@@ -259,6 +314,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                       SizedBox(height: isMobile ? 15 : 20),
 
+                      // Exit Button
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
@@ -273,7 +329,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         child: ElevatedButton.icon(
                           onPressed: _openWebsite,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF1a2a6c),
+                            backgroundColor: const Color(0xFF4A90E2),
                             padding: EdgeInsets.symmetric(
                               horizontal: isMobile ? 20 : 30,
                               vertical: isMobile ? 12 : 15,
@@ -291,52 +347,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               fontSize: isMobile ? 14 : 16,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      SizedBox(height: isMobile ? 10 : 15),
-
-                      // Main Menu Button
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xFF8B4513).withOpacity(0.3),
-                              blurRadius: 10,
-                              spreadRadius: 2,
-                            ),
-                          ],
-                        ),
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            setState(() {
-                              _showWelcomeDialog = false;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF8B4513),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: isMobile ? 20 : 30,
-                              vertical: isMobile ? 12 : 15,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          icon: Icon(Icons.home, 
-                              size: isMobile ? 18 : 24, 
-                              color: Colors.white),
-                          label: Text(
-                            'MAIN MENU',
-                            style: TextStyle(
-                              fontSize: isMobile ? 14 : 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontFamily: 'Poppins',
+                              fontFamily: 'ComicNeue',
                             ),
                           ),
                         ),
@@ -347,6 +358,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
             ),
 
+            // Welcome Dialog
             if (_showWelcomeDialog)
               _buildWelcomeDialog(isMobile, isTablet, isDesktop),
           ],
@@ -355,23 +367,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  Widget _buildElementBadge(String assetPath, double size) {
+  Widget _buildCharacterBadge(String assetPath, double size) {
     return Container(
       width: size,
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white.withOpacity(0.1),
-        border: Border.all(color: Colors.white.withOpacity(0.3), width: 2),
+        color: Colors.white.withOpacity(0.2),
+        border: Border.all(color: Colors.white.withOpacity(0.4), width: 3),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.orange.withOpacity(0.3),
+            blurRadius: 15,
+            spreadRadius: 2,
+          ),
+        ],
       ),
       child: ClipOval(
         child: Image.asset(
           assetPath,
           fit: BoxFit.cover,
           errorBuilder: (ctx, err, st) => Icon(
-            Icons.ac_unit,
+            Icons.face,
             size: size * 0.6,
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.white.withOpacity(0.7),
           ),
         ),
       ),
@@ -390,25 +409,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color(0xFFE0F7FA),
-                Color(0xFFB2EBF2),
+                Color(0xFFE8F4FF),
+                Color(0xFFF0FFE8),
               ],
             ),
             borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: const Color(0xFF1a2a6c), width: 4),
+            border: Border.all(color: const Color(0xFF4A90E2), width: 4),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // Dora Image
               Container(
-                width: isDesktop ? 150 : isTablet ? 120 : 100,
-                height: isDesktop ? 150 : isTablet ? 120 : 100,
+                width: isDesktop ? 120 : isTablet ? 100 : 80,
+                height: isDesktop ? 120 : isTablet ? 100 : 80,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: const Color(0xFF1a2a6c), width: 4),
+                  border: Border.all(color: const Color(0xFF4A90E2), width: 4),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.blue.withOpacity(0.5),
+                      color: Colors.orange.withOpacity(0.4),
                       blurRadius: 15,
                       spreadRadius: 3,
                     ),
@@ -416,13 +436,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 child: ClipOval(
                   child: Image.asset(
-                    'assets/aang_smiling.jpg',
+                    'assets/dora_waving.png',
                     fit: BoxFit.cover,
                     errorBuilder: (ctx, err, st) => Container(
-                      color: const Color(0xFFE0F7FA),
+                      color: const Color(0xFFE8F4FF),
                       child: Icon(Icons.face, 
-                          size: isDesktop ? 80 : isTablet ? 60 : 40, 
-                          color: const Color(0xFF1a2a6c)),
+                          size: isDesktop ? 60 : isTablet ? 50 : 40, 
+                          color: const Color(0xFF4A90E2)),
                     ),
                   ),
                 ),
@@ -431,12 +451,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               SizedBox(height: isMobile ? 15 : 20),
               
               Text(
-                'Welcome, Math Bender!',
+                '¡Hola! I\'m Dora!',
                 style: TextStyle(
                   fontSize: isDesktop ? 28 : isTablet ? 24 : 20,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF1a2a6c),
-                  fontFamily: 'Poppins',
+                  color: const Color(0xFF4A90E2),
+                  fontFamily: 'ComicNeue',
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -448,18 +468,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.8),
                   borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: const Color(0xFF8B4513), width: 2),
+                  border: Border.all(color: const Color(0xFF7ED321), width: 2),
                 ),
                 child: Text(
-                  'I\'m Aang, the Avatar! Master the elements of mathematics by solving multiplication problems. '
-                  'Choose your grade level and prove your skills to become a true Math Master!\n\n'
-                  '• Solve 10 problems per level\n'
-                  '• Advance through 20 grades\n'
-                  '• Balance all four elements of math!',
+                  'Let\'s go on a subtraction adventure! Can you help me solve these math problems?\n\n'
+                  'We\'ll start with easy numbers and work our way up to bigger challenges!\n\n'
+                  'Remember: No negative numbers - we only subtract smaller numbers from bigger ones!\n\n'
+                  '¡Vámonos! Let\'s go!',
                   style: TextStyle(
                     fontSize: isMobile ? 14 : 16,
-                    color: const Color(0xFF1a2a6c),
-                    fontFamily: 'Roboto',
+                    color: const Color(0xFF4A90E2),
+                    fontFamily: 'ComicNeue',
                     height: 1.6,
                   ),
                   textAlign: TextAlign.center,
@@ -468,31 +487,42 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               
               SizedBox(height: isMobile ? 20 : 25),
               
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    _showWelcomeDialog = false;
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFb21f1f),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: isMobile ? 30 : 40,
-                    vertical: isMobile ? 12 : 15,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Backpack Icon
+                  Icon(Icons.backpack, size: 40, color: Color(0xFF8B4513)),
+                  
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _showWelcomeDialog = false;
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF7ED321),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isMobile ? 30 : 40,
+                        vertical: isMobile ? 12 : 15,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Text(
+                      '¡Vámonos!',
+                      style: TextStyle(
+                        fontSize: isMobile ? 16 : 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontFamily: 'ComicNeue',
+                      ),
+                    ),
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                child: Text(
-                  'LET\'S BEGIN!',
-                  style: TextStyle(
-                    fontSize: isMobile ? 16 : 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontFamily: 'Poppins',
-                  ),
-                ),
+                  
+                  // Map Icon
+                  Icon(Icons.map, size: 40, color: Color(0xFFF8E71C)),
+                ],
               ),
             ],
           ),
@@ -503,11 +533,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 }
 
 // Grade Selection Screen
-class GradeSelectionScreen extends StatelessWidget {
+class GradeSelectionScreen extends StatefulWidget {
   const GradeSelectionScreen({super.key});
+
+  @override
+  State<GradeSelectionScreen> createState() => _GradeSelectionScreenState();
+}
+
+class _GradeSelectionScreenState extends State<GradeSelectionScreen> {
+  List<bool> unlockedGrades = List.generate(31, (index) => index <= 1); // Grade 1 always unlocked
 
   void _openWebsite() {
     html.window.open('https://hubertmucyo.github.io/gamify', '_blank');
+  }
+
+  void _updateUnlockedGrades(int grade, bool passed) {
+    setState(() {
+      if (passed && grade < 30) {
+        unlockedGrades[grade + 1] = true;
+      }
+    });
   }
 
   @override
@@ -524,14 +569,15 @@ class GradeSelectionScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF1a2a6c),
-              Color(0xFFb21f1f),
-              Color(0xFFfdbb2d),
+              Color(0xFF4A90E2),
+              Color(0xFFF8E71C),
+              Color(0xFF7ED321),
             ],
           ),
         ),
         child: Column(
           children: [
+            // Header
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(
@@ -541,13 +587,13 @@ class GradeSelectionScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
                   colors: [
-                    Color(0xFF1a2a6c),
-                    Color(0xFFb21f1f),
+                    Color(0xFF4A90E2),
+                    Color(0xFF7ED321),
                   ],
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.orange.withOpacity(0.4),
                     blurRadius: 15,
                     spreadRadius: 5,
                   ),
@@ -566,25 +612,46 @@ class GradeSelectionScreen extends StatelessWidget {
                     width: isDesktop ? 1200 : isTablet ? 800 : screenSize.width * 0.95,
                     child: Column(
                       children: [
+                        Text(
+                          'Choose Your Adventure Level!',
+                          style: TextStyle(
+                            fontSize: isDesktop ? 32 : isTablet ? 28 : 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontFamily: 'ComicNeue',
+                            shadows: [
+                              const Shadow(
+                                blurRadius: 8,
+                                color: Colors.black,
+                                offset: Offset(2, 2),
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+
+                        SizedBox(height: isMobile ? 20 : 30),
+
+                        // Grade Selection Grid
                         GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: isDesktop ? 5 : isTablet ? 4 : 3,
-                            crossAxisSpacing: isMobile ? 12 : 20,
-                            mainAxisSpacing: isMobile ? 12 : 20,
-                            childAspectRatio: isMobile ? 0.9 : 1.2,
+                            crossAxisCount: isDesktop ? 6 : isTablet ? 5 : 4,
+                            crossAxisSpacing: isMobile ? 10 : 15,
+                            mainAxisSpacing: isMobile ? 10 : 15,
+                            childAspectRatio: 0.9,
                           ),
-                          itemCount: 20,
+                          itemCount: 30,
                           itemBuilder: (context, index) {
                             final grade = index + 1;
-                            final elementColor = _getElementColor(grade);
-                            final elementImage = _getElementImage(grade);
+                            final isUnlocked = unlockedGrades[grade];
+                            final difficultyColor = _getDifficultyColor(grade);
                             
                             return _buildGradeCard(
                               grade,
-                              elementColor,
-                              elementImage,
+                              difficultyColor,
+                              isUnlocked,
                               context,
                               isMobile,
                               isTablet,
@@ -595,15 +662,16 @@ class GradeSelectionScreen extends StatelessWidget {
 
                         SizedBox(height: isMobile ? 20 : 40),
 
+                        // Boots Character
                         Container(
-                          width: isDesktop ? 120 : isTablet ? 100 : 80,
-                          height: isDesktop ? 120 : isTablet ? 100 : 80,
+                          width: isDesktop ? 100 : isTablet ? 80 : 60,
+                          height: isDesktop ? 100 : isTablet ? 80 : 60,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(color: Colors.white, width: 3),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
+                                color: Colors.orange.withOpacity(0.4),
                                 blurRadius: 15,
                                 spreadRadius: 3,
                               ),
@@ -611,15 +679,27 @@ class GradeSelectionScreen extends StatelessWidget {
                           ),
                           child: ClipOval(
                             child: Image.asset(
-                              'assets/momo.jpg',
+                              'assets/boots.png',
                               fit: BoxFit.cover,
                               errorBuilder: (ctx, err, st) => Container(
                                 color: const Color(0xFF8B4513),
-                                child: Icon(Icons.airline_seat_legroom_extra, 
-                                    size: isDesktop ? 50 : isTablet ? 40 : 30, 
+                                child: Icon(Icons.pets, 
+                                    size: isDesktop ? 40 : isTablet ? 30 : 20, 
                                     color: Colors.white),
                               ),
                             ),
+                          ),
+                        ),
+
+                        SizedBox(height: 10),
+
+                        Text(
+                          'Boots is ready to help you learn!',
+                          style: TextStyle(
+                            fontSize: isMobile ? 14 : 16,
+                            color: Colors.white,
+                            fontFamily: 'ComicNeue',
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
@@ -640,52 +720,45 @@ class GradeSelectionScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Backpack Icon
             Container(
               width: 50,
               height: 50,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
+                color: const Color(0xFF8B4513),
                 border: Border.all(color: Colors.white, width: 2),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.orange.withOpacity(0.3),
                     blurRadius: 10,
                     spreadRadius: 2,
                   ),
                 ],
               ),
-              child: ClipOval(
-                child: Image.asset(
-                  'assets/appa.jpg',
-                  fit: BoxFit.cover,
-                  errorBuilder: (ctx, err, st) => Container(
-                    color: const Color(0xFF8B4513),
-                    child: const Icon(Icons.pets, size: 25, color: Colors.white),
-                  ),
-                ),
-              ),
+              child: const Icon(Icons.backpack, color: Colors.white, size: 30),
             ),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
                 children: [
                   Text(
-                    'CHOOSE YOUR PATH',
+                    'SUBTRACTION ADVENTURE',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontFamily: 'Poppins',
+                      fontFamily: 'ComicNeue',
                       letterSpacing: 1,
                     ),
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    'Select Your Grade Level',
+                    'Choose Your Grade',
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.white,
-                      fontFamily: 'Roboto',
+                      fontFamily: 'ComicNeue',
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -695,76 +768,82 @@ class GradeSelectionScreen extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        // Main Menu Button for mobile
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFF8B4513).withOpacity(0.3),
-                blurRadius: 8,
-                spreadRadius: 1,
-              ),
-            ],
-          ),
-          child: ElevatedButton.icon(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const WelcomeScreen()),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF8B4513),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              shape: RoundedRectangleBorder(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Main Menu Button
+            Container(
+              margin: const EdgeInsets.only(right: 8),
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF4A90E2).withOpacity(0.3),
+                    blurRadius: 8,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF4A90E2),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                icon: const Icon(Icons.home, color: Colors.white, size: 14),
+                label: const Text(
+                  'MENU',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontFamily: 'ComicNeue',
+                  ),
+                ),
               ),
             ),
-            icon: const Icon(Icons.home, color: Colors.white, size: 14),
-            label: const Text(
-              'MAIN MENU',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontFamily: 'Poppins',
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 10,
-                spreadRadius: 2,
-              ),
-            ],
-          ),
-          child: ElevatedButton.icon(
-            onPressed: _openWebsite,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF1a2a6c),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              shape: RoundedRectangleBorder(
+            // Exit Button
+            Container(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 8,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              child: ElevatedButton.icon(
+                onPressed: _openWebsite,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF4A90E2),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                icon: const Icon(Icons.exit_to_app, color: Colors.white, size: 14),
+                label: const Text(
+                  'EXIT',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontFamily: 'ComicNeue',
+                  ),
+                ),
               ),
             ),
-            icon: const Icon(Icons.exit_to_app, color: Colors.white, size: 16),
-            label: const Text(
-              'EXIT TO GAMIFY',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontFamily: 'Poppins',
-              ),
-            ),
-          ),
+          ],
         ),
       ],
     );
@@ -774,52 +853,45 @@ class GradeSelectionScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        // Backpack Icon
         Container(
-          width: isDesktop ? 80 : 60,
-          height: isDesktop ? 80 : 60,
+          width: isDesktop ? 70 : 60,
+          height: isDesktop ? 70 : 60,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
+            color: const Color(0xFF8B4513),
             border: Border.all(color: Colors.white, width: 3),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
+                color: Colors.orange.withOpacity(0.3),
                 blurRadius: 10,
                 spreadRadius: 2,
               ),
             ],
           ),
-          child: ClipOval(
-            child: Image.asset(
-              'assets/appa.jpg',
-              fit: BoxFit.cover,
-              errorBuilder: (ctx, err, st) => Container(
-                color: const Color(0xFF8B4513),
-                child: Icon(Icons.pets, 
-                    size: isDesktop ? 40 : 30, 
-                    color: Colors.white),
-              ),
-            ),
-          ),
+          child: Icon(Icons.backpack, 
+              size: isDesktop ? 40 : 30, 
+              color: Colors.white),
         ),
 
         Column(
           children: [
             Text(
-              'CHOOSE YOUR PATH',
+              'DORA SUBTRACTION ADVENTURE',
               style: TextStyle(
                 fontSize: isDesktop ? 32 : 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontFamily: 'Poppins',
-                letterSpacing: 2,
+                fontFamily: 'ComicNeue',
+                letterSpacing: 1.5,
               ),
             ),
             Text(
-              'Select Your Grade Level',
+              'Choose Your Grade Level',
               style: TextStyle(
                 fontSize: isDesktop ? 18 : 14,
                 color: Colors.white,
-                fontFamily: 'Roboto',
+                fontFamily: 'ComicNeue',
               ),
             ),
           ],
@@ -836,7 +908,7 @@ class GradeSelectionScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF8B4513).withOpacity(0.3),
+                    color: const Color(0xFF4A90E2).withOpacity(0.3),
                     blurRadius: 8,
                     spreadRadius: 1,
                   ),
@@ -850,7 +922,7 @@ class GradeSelectionScreen extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF8B4513),
+                  backgroundColor: const Color(0xFF4A90E2),
                   padding: EdgeInsets.symmetric(
                     horizontal: isDesktop ? 16 : 12,
                     vertical: isDesktop ? 10 : 8,
@@ -868,13 +940,13 @@ class GradeSelectionScreen extends StatelessWidget {
                     fontSize: isDesktop ? 12 : 10,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    fontFamily: 'Poppins',
+                    fontFamily: 'ComicNeue',
                   ),
                 ),
               ),
             ),
 
-            // Existing Exit Button
+            // Exit Button
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -889,7 +961,7 @@ class GradeSelectionScreen extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: _openWebsite,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF1a2a6c),
+                  backgroundColor: const Color(0xFF4A90E2),
                   padding: EdgeInsets.symmetric(
                     horizontal: isDesktop ? 20 : 16,
                     vertical: isDesktop ? 12 : 10,
@@ -907,7 +979,7 @@ class GradeSelectionScreen extends StatelessWidget {
                     fontSize: isDesktop ? 14 : 12,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    fontFamily: 'Poppins',
+                    fontFamily: 'ComicNeue',
                   ),
                 ),
               ),
@@ -918,75 +990,64 @@ class GradeSelectionScreen extends StatelessWidget {
     );
   }
 
-  Color _getElementColor(int grade) {
-    if (grade <= 5) return const Color(0xFF1a2a6c);
-    if (grade <= 10) return const Color(0xFFb21f1f);
-    if (grade <= 15) return const Color(0xFF8B4513);
-    return const Color(0xFFfdbb2d);
+  Color _getDifficultyColor(int grade) {
+    if (grade <= 10) return const Color(0xFF7ED321); // Easy - Green
+    if (grade <= 20) return const Color(0xFFF8E71C); // Medium - Yellow
+    return const Color(0xFF4A90E2); // Hard - Blue
   }
 
-  String _getElementImage(int grade) {
-    if (grade <= 5) return 'assets/water_badge.jpg';
-    if (grade <= 10) return 'assets/fire_badge.jpg';
-    if (grade <= 15) return 'assets/earth_badge.jpg';
-    return 'assets/air_badge.jpg';
-  }
-
-  Widget _buildGradeCard(int grade, Color elementColor, String elementImage, 
+  Widget _buildGradeCard(int grade, Color difficultyColor, bool isUnlocked, 
                          BuildContext context, bool isMobile, bool isTablet, bool isDesktop) {
     return GestureDetector(
-      onTap: () {
+      onTap: isUnlocked ? () {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => GamePage(startingGrade: grade)),
+          MaterialPageRoute(builder: (context) => SubtractionGamePage(
+            startingGrade: grade,
+            onLevelComplete: _updateUnlockedGrades,
+          )),
         );
-      },
+      } : null,
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              elementColor.withOpacity(0.8),
-              elementColor.withOpacity(0.4),
-            ],
+            colors: isUnlocked
+                ? [
+                    difficultyColor.withOpacity(0.8),
+                    difficultyColor.withOpacity(0.4),
+                  ]
+                : [
+                    Colors.grey.withOpacity(0.6),
+                    Colors.grey.withOpacity(0.3),
+                  ],
           ),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: elementColor.withOpacity(0.5),
+              color: (isUnlocked ? difficultyColor : Colors.grey).withOpacity(0.5),
               blurRadius: 15,
               spreadRadius: 3,
             ),
           ],
-          border: Border.all(color: Colors.white, width: 2),
+          border: Border.all(
+            color: isUnlocked ? Colors.white : Colors.grey,
+            width: 2,
+          ),
         ),
         child: Stack(
           children: [
-            Positioned(
-              top: isMobile ? 5 : 10,
-              right: isMobile ? 5 : 10,
-              child: Container(
-                width: isDesktop ? 40 : isTablet ? 35 : 30,
-                height: isDesktop ? 40 : isTablet ? 35 : 30,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.9),
-                  border: Border.all(color: Colors.white, width: 2),
-                ),
-                child: ClipOval(
-                  child: Image.asset(
-                    elementImage,
-                    fit: BoxFit.cover,
-                    errorBuilder: (ctx, err, st) => Icon(
-                      Icons.ac_unit,
-                      size: isDesktop ? 20 : isTablet ? 18 : 15,
-                      color: elementColor,
-                    ),
-                  ),
+            if (!isUnlocked)
+              Positioned(
+                top: 8,
+                right: 8,
+                child: Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                  size: isDesktop ? 20 : isTablet ? 18 : 16,
                 ),
               ),
-            ),
 
             Center(
               child: Column(
@@ -995,23 +1056,23 @@ class GradeSelectionScreen extends StatelessWidget {
                   Text(
                     'GRADE',
                     style: TextStyle(
-                      fontSize: isDesktop ? 14 : isTablet ? 12 : 10,
+                      fontSize: isDesktop ? 12 : isTablet ? 11 : 10,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontFamily: 'Poppins',
+                      fontFamily: 'ComicNeue',
                       letterSpacing: 1,
                     ),
                   ),
                   Text(
                     '$grade',
                     style: TextStyle(
-                      fontSize: isDesktop ? 36 : isTablet ? 32 : 28,
+                      fontSize: isDesktop ? 28 : isTablet ? 24 : 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontFamily: 'Poppins',
+                      fontFamily: 'ComicNeue',
                       shadows: [
                         const Shadow(
-                          blurRadius: 10,
+                          blurRadius: 8,
                           color: Colors.black,
                           offset: Offset(2, 2),
                         ),
@@ -1019,11 +1080,11 @@ class GradeSelectionScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    _getElementName(grade),
+                    _getDifficultyText(grade),
                     style: TextStyle(
-                      fontSize: isDesktop ? 12 : isTablet ? 11 : 10,
+                      fontSize: isDesktop ? 10 : isTablet ? 9 : 8,
                       color: Colors.white,
-                      fontFamily: 'Roboto',
+                      fontFamily: 'ComicNeue',
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -1036,26 +1097,29 @@ class GradeSelectionScreen extends StatelessWidget {
     );
   }
 
-  String _getElementName(int grade) {
-    if (grade <= 5) return 'WATER';
-    if (grade <= 10) return 'FIRE';
-    if (grade <= 15) return 'EARTH';
-    return 'AIR';
+  String _getDifficultyText(int grade) {
+    if (grade <= 10) return 'EASY';
+    if (grade <= 20) return 'MEDIUM';
+    return 'HARD';
   }
 }
 
-// Game Page - YOUR ORIGINAL LOGIC WITH AVATAR THEME
-class GamePage extends StatefulWidget {
+// Subtraction Game Page
+class SubtractionGamePage extends StatefulWidget {
   final int startingGrade;
+  final Function(int, bool) onLevelComplete;
 
-  const GamePage({super.key, required this.startingGrade});
+  const SubtractionGamePage({
+    super.key,
+    required this.startingGrade,
+    required this.onLevelComplete,
+  });
 
   @override
-  State<GamePage> createState() => _GamePageState();
+  State<SubtractionGamePage> createState() => _SubtractionGamePageState();
 }
 
-class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin {
-  // YOUR ORIGINAL GAME VARIABLES - UNCHANGED
+class _SubtractionGamePageState extends State<SubtractionGamePage> with SingleTickerProviderStateMixin {
   final Random _random = Random();
   int num1 = 1;
   int num2 = 1;
@@ -1066,8 +1130,9 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
   final TextEditingController _answerController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   String feedback = "";
+  String doraMessage = "";
 
-  int timeLeft = 10;
+  int timeLeft = 15;
   Timer? _timer;
   bool isTimeUp = false;
 
@@ -1090,116 +1155,81 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
       CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
     );
     _generateQuestion();
+    _setDoraMessage();
+  }
+
+  void _setDoraMessage() {
+    final messages = [
+      "Can you help me solve this?",
+      "Let's figure this out together!",
+      "You can do it!",
+      "¡Excelente! Keep going!",
+      "Math is fun with friends!",
+      "Use your thinking skills!",
+    ];
+    setState(() {
+      doraMessage = messages[_random.nextInt(messages.length)];
+    });
   }
 
   void _generateQuestion() {
-    // YOUR ORIGINAL QUESTION GENERATION LOGIC - UNCHANGED
-    switch (grade) {
-      case 1:
-        num1 = _random.nextInt(5) + 1;
-        num2 = _random.nextInt(5) + 1;
-        break;
-      case 2:
-        num1 = _random.nextInt(9) + 1;
-        num2 = _random.nextInt(9) + 1;
-        break;
-      case 3:
-        num1 = _random.nextInt(8) + 2;
-        num2 = _random.nextInt(8) + 2;
-        break;
-      case 4:
-        num1 = _random.nextInt(10) + 10;
-        num2 = _random.nextInt(8) + 2;
-        break;
-      case 5:
-        num1 = _random.nextInt(10) + 10;
-        num2 = _random.nextInt(10) + 10;
-        break;
-      case 6:
-        num1 = _random.nextInt(30) + 20;
-        num2 = _random.nextInt(8) + 2;
-        break;
-      case 7:
-        num1 = _random.nextInt(30) + 20;
-        num2 = _random.nextInt(10) + 10;
-        break;
-      case 8:
-        num1 = _random.nextInt(50) + 50;
-        num2 = _random.nextInt(10) + 10;
-        break;
-      case 9:
-        num1 = _random.nextInt(50) + 50;
-        num2 = _random.nextInt(30) + 20;
-        break;
-      case 10:
-        num1 = _random.nextInt(100) + 100;
-        num2 = _random.nextInt(8) + 2;
-        break;
-      case 11:
-        num1 = _random.nextInt(100) + 100;
-        num2 = _random.nextInt(10) + 10;
-        break;
-      case 12:
-        num1 = _random.nextInt(100) + 100;
-        num2 = _random.nextInt(30) + 20;
-        break;
-      case 13:
-        num1 = _random.nextInt(100) + 100;
-        num2 = _random.nextInt(50) + 50;
-        break;
-      case 14:
-        num1 = _random.nextInt(900) + 100;
-        num2 = _random.nextInt(90) + 10;
-        break;
-      case 15:
-        num1 = _random.nextInt(900) + 100;
-        num2 = _random.nextInt(900) + 100;
-        break;
-      case 16:
-        num1 = _random.nextInt(1000) + 1000;
-        num2 = _random.nextInt(900) + 100;
-        break;
-      case 17:
-        num1 = _random.nextInt(1000) + 1000;
-        num2 = _random.nextInt(1000) + 1000;
-        break;
-      case 18:
-        num1 = _random.nextInt(3000) + 2000;
-        num2 = _random.nextInt(1000) + 1000;
-        break;
-      case 19:
-        num1 = _random.nextInt(3000) + 2000;
-        num2 = _random.nextInt(3000) + 2000;
-        break;
-      case 20:
-        num1 = _random.nextInt(5000) + 5000;
-        num2 = _random.nextInt(5000) + 5000;
-        break;
-      default:
-        num1 = _random.nextInt(5) + 1;
-        num2 = _random.nextInt(5) + 1;
+    int maxDigits = _getMaxDigitsForGrade();
+    
+    // Ensure num1 is always bigger than num2 to avoid negative results
+    if (maxDigits == 1) {
+      // Single digit subtraction
+      num1 = _random.nextInt(9) + 2; // 2-10 to ensure positive result
+      num2 = _random.nextInt(num1 - 1) + 1; // 1 to (num1-1)
+    } else {
+      // Multi-digit subtraction with proper bounds
+      int minValue = pow(10, maxDigits - 1).toInt();
+      int maxValue = pow(10, maxDigits).toInt() - 1;
+      
+      num1 = minValue + _random.nextInt(maxValue - minValue);
+      
+      // Ensure num2 is smaller but still appropriate for the grade
+      int maxNum2 = num1 - 1;
+      int minNum2 = pow(10, maxDigits - 1).toInt();
+      if (minNum2 >= maxNum2) {
+        minNum2 = 1;
+      }
+      num2 = minNum2 + _random.nextInt(maxNum2 - minNum2 + 1);
     }
+
     _answerController.clear();
+    timeLeft = _getTimeLimit();
     Future.delayed(const Duration(milliseconds: 100), () {
       if (mounted) _focusNode.requestFocus();
     });
     _startTimer();
+    _setDoraMessage();
+  }
+
+  int _getMaxDigitsForGrade() {
+    if (grade <= 5) return 1;      // Grades 1-5: Single digit
+    if (grade <= 10) return 2;     // Grades 6-10: Two digits  
+    if (grade <= 20) return 3;     // Grades 11-20: Three digits
+    return 4;                      // Grades 21-30: Four digits
+  }
+
+  int _getTimeLimit() {
+    return _getMaxDigitsForGrade() >= 3 ? 30 : 15;
   }
 
   void _checkAnswer() {
     if (_answerController.text.isEmpty || isTimeUp) return;
     _timer?.cancel();
     int userAnswer = int.tryParse(_answerController.text) ?? 0;
-    int correctAnswer = num1 * num2;
+    int correctAnswer = num1 - num2;
 
     setState(() {
       questionCount++;
       if (userAnswer == correctAnswer) {
         correctCount++;
-        feedback = "✅ CORRECT!";
+        feedback = "✅ ¡Excelente! Correct!";
       } else {
         wrongCount++;
-        feedback = "❌ WRONG! Answer: $correctAnswer";
+        feedback = "❌ Almost! Answer: $correctAnswer";
       }
 
       if (questionCount == 10) {
@@ -1218,34 +1248,44 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
   }
 
   void _showLevelResult() async {
-    // YOUR ORIGINAL LEVEL RESULT LOGIC - UNCHANGED
+    bool passed = correctCount >= 7;
+    bool relegated = correctCount < 3 && grade > 1;
+
     String resultMsg;
     String resultEmoji;
     Color resultColor;
-    String avatarImage;
+    String doraImage;
 
-    if (correctCount >= 7 && grade < 20) {
-      grade++;
-      resultMsg = "AWESOME! You advance to Grade $grade!";
+    // Store the current grade before any changes
+    int currentGrade = grade;
+
+    if (passed && grade < 30) {
+      resultMsg = "¡Fantástico! You advance to Grade ${grade + 1}!";
       resultEmoji = "🎉";
-      resultColor = const Color(0xFFfdbb2d);
-      avatarImage = 'assets/aang_correct.jpg';
-    } else if (correctCount < 4 && grade > 1) {
-      grade--;
-      resultMsg = "Keep practicing! You return to Grade $grade.";
+      resultColor = const Color(0xFF7ED321);
+      doraImage = 'assets/dora_happy.png';
+      // Update the grade for the next level
+      grade++;
+      widget.onLevelComplete(currentGrade, true);
+    } else if (relegated) {
+      resultMsg = "Keep practicing! You return to Grade ${grade - 1}.";
       resultEmoji = "💪";
-      resultColor = const Color(0xFFb21f1f);
-      avatarImage = 'assets/aang_wrong.jpg';
-    } else if (grade == 20) {
-      resultMsg = "LEGENDARY! You've mastered all grades!";
+      resultColor = const Color(0xFFF8E71C);
+      doraImage = 'assets/dora_encouraging.png';
+      grade--;
+      widget.onLevelComplete(currentGrade, false);
+    } else if (grade == 30 && passed) {
+      resultMsg = "¡Increíble! You've mastered all subtraction grades!";
       resultEmoji = "🏆";
-      resultColor = const Color(0xFF1a2a6c);
-      avatarImage = 'assets/aang_correct.jpg';
+      resultColor = const Color(0xFF4A90E2);
+      doraImage = 'assets/dora_celebrating.png';
+      widget.onLevelComplete(currentGrade, true);
     } else {
       resultMsg = "Good effort! You stay at Grade $grade.";
       resultEmoji = "⭐";
-      resultColor = const Color(0xFF8B4513);
-      avatarImage = correctCount >= 5 ? 'assets/aang_correct.jpg' : 'assets/aang_wrong.jpg';
+      resultColor = const Color(0xFF4A90E2);
+      doraImage = 'assets/dora_smiling.png';
+      widget.onLevelComplete(currentGrade, false);
     }
 
     await showDialog(
@@ -1267,7 +1307,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Avatar image instead of SpongeBob
+              // Dora Result Image
               Container(
                 width: 120,
                 height: 120,
@@ -1284,10 +1324,10 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                 ),
                 child: ClipOval(
                   child: Image.asset(
-                    avatarImage,
+                    doraImage,
                     fit: BoxFit.cover,
                     errorBuilder: (ctx, err, st) => Icon(
-                      correctCount >= 7 ? Icons.emoji_emotions : Icons.sentiment_dissatisfied,
+                      passed ? Icons.celebration : Icons.face,
                       size: 60,
                       color: resultColor,
                     ),
@@ -1301,11 +1341,12 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
               ),
               const SizedBox(height: 10),
               Text(
-                "LEVEL COMPLETE",
+                "ADVENTURE COMPLETE!",
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: resultColor,
+                  fontFamily: 'ComicNeue',
                 ),
               ),
               const SizedBox(height: 20),
@@ -1314,6 +1355,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: const Color(0xFF4A90E2), width: 2),
                 ),
                 child: Column(
                   children: [
@@ -1332,8 +1374,9 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                 resultMsg,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Colors.grey.shade800,
+                  fontFamily: 'ComicNeue',
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -1351,7 +1394,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF8B4513),
+                      backgroundColor: const Color(0xFF4A90E2),
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -1364,27 +1407,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
-                      ),
-                    ),
-                  ),
-
-                  // Exit Button
-                  ElevatedButton.icon(
-                    onPressed: _openWebsite,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red.shade500,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                    icon: const Icon(Icons.exit_to_app, size: 16, color: Colors.white),
-                    label: const Text(
-                      'EXIT',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        fontFamily: 'ComicNeue',
                       ),
                     ),
                   ),
@@ -1402,7 +1425,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFb21f1f),
+                      backgroundColor: const Color(0xFF7ED321),
                       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -1414,6 +1437,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        fontFamily: 'ComicNeue',
                       ),
                     ),
                   ),
@@ -1432,8 +1456,9 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
         Text(
           label,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             color: Colors.grey.shade700,
+            fontFamily: 'ComicNeue',
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -1441,8 +1466,9 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
         Text(
           '$value',
           style: TextStyle(
-            fontSize: 32,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
+            fontFamily: 'ComicNeue',
             color: color,
           ),
         ),
@@ -1476,7 +1502,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
         setState(() {
           isTimeUp = true;
           wrongCount++;
-          feedback = "⏰ TIME'S UP! Answer: ${num1 * num2}";
+          feedback = "⏰ Time's up! Answer: ${num1 - num2}";
           questionCount++;
         });
         Future.delayed(const Duration(milliseconds: 1200), () {
@@ -1491,13 +1517,6 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
         });
       }
     });
-  }
-
-  int _getTimeLimit() {
-    if (grade <= 5) return 10;
-    if (grade <= 10) return 15;
-    if (grade <= 15) return 20;
-    return 25;
   }
 
   @override
@@ -1522,16 +1541,16 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF1a2a6c),
-              Color(0xFFb21f1f),
-              Color(0xFFfdbb2d),
+              Color(0xFF4A90E2),
+              Color(0xFFF8E71C),
+              Color(0xFF7ED321),
             ],
           ),
         ),
         child: SafeArea(
           child: Column(
             children: [
-              // Avatar-themed header
+              // Header
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(
@@ -1541,13 +1560,13 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
-                      Color(0xFF1a2a6c),
-                      Color(0xFFb21f1f),
+                      Color(0xFF4A90E2),
+                      Color(0xFF7ED321),
                     ],
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.orange.withOpacity(0.4),
                       blurRadius: 10,
                       spreadRadius: 3,
                     ),
@@ -1558,28 +1577,45 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                     : _buildGameDesktopHeader(isTablet),
               ),
 
-              // Info Bar - Avatar themed
+              // Dora Message
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                color: Colors.white.withOpacity(0.2),
+                child: Text(
+                  doraMessage,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontFamily: 'ComicNeue',
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+
+              // Info Bar
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(
                   vertical: isMobile ? 8 : 12,
                   horizontal: 12,
                 ),
-                color: const Color(0xFF1a2a6c).withOpacity(0.3),
+                color: const Color(0xFF4A90E2).withOpacity(0.3),
                 child: Wrap(
                   alignment: WrapAlignment.spaceEvenly,
                   spacing: 8,
                   runSpacing: 8,
                   children: [
-                    _buildInfoChip('GRADE', '$grade', const Color(0xFFb21f1f), isMobile),
-                    _buildInfoChip('Q', '${questionCount + 1}/10', const Color(0xFF1a2a6c), isMobile),
+                    _buildInfoChip('GRADE', '$grade', const Color(0xFF7ED321), isMobile),
+                    _buildInfoChip('Q', '${questionCount + 1}/10', const Color(0xFFF8E71C), isMobile),
                     _buildInfoChip('✅', '$correctCount', Colors.green, isMobile),
                     _buildInfoChip('❌', '$wrongCount', Colors.red, isMobile),
                   ],
                 ),
               ),
 
-              // Main Game Content - YOUR ORIGINAL UI WITH AVATAR THEME
+              // Main Game Content
               Expanded(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.only(
@@ -1595,19 +1631,19 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                         borderRadius: BorderRadius.circular(25),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFfdbb2d).withOpacity(0.4),
+                            color: const Color(0xFFF8E71C).withOpacity(0.4),
                             blurRadius: 20,
                             spreadRadius: 5,
                           ),
                         ],
-                        border: Border.all(color: const Color(0xFFfdbb2d), width: 4),
+                        border: Border.all(color: const Color(0xFFF8E71C), width: 4),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          // Timer - Avatar themed
+                          // Timer
                           ScaleTransition(
-                            scale: timeLeft <= 3
+                            scale: timeLeft <= 5
                                 ? _pulseAnimation
                                 : const AlwaysStoppedAnimation(1.0),
                             child: Container(
@@ -1615,13 +1651,13 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 gradient: RadialGradient(
-                                  colors: timeLeft <= 3
+                                  colors: timeLeft <= 5
                                       ? [Colors.red, Colors.red.shade900]
-                                      : [Color(0xFF1a2a6c), Color(0xFFb21f1f)],
+                                      : [Color(0xFF4A90E2), Color(0xFF7ED321)],
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: (timeLeft <= 3 ? Colors.red : Color(0xFF1a2a6c))
+                                    color: (timeLeft <= 5 ? Colors.red : Color(0xFF4A90E2))
                                         .withOpacity(0.6),
                                     blurRadius: 20,
                                     spreadRadius: 5,
@@ -1642,6 +1678,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                                       fontSize: isMobile ? 28 : 36,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
+                                      fontFamily: 'ComicNeue',
                                     ),
                                   ),
                                   Text(
@@ -1649,6 +1686,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                                     style: TextStyle(
                                       fontSize: isMobile ? 10 : 14,
                                       color: Colors.white,
+                                      fontFamily: 'ComicNeue',
                                     ),
                                   ),
                                 ],
@@ -1658,22 +1696,23 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
 
                           SizedBox(height: isMobile ? 20 : 30),
 
-                          // Question - Avatar themed
+                          // Question
                           Container(
                             padding: EdgeInsets.all(isMobile ? 16 : 20),
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
-                                colors: [Color(0xFFfdbb2d), Color(0xFFb21f1f)],
+                                colors: [Color(0xFFF8E71C), Color(0xFF7ED321)],
                               ),
                               borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: const Color(0xFF8B4513), width: 3),
+                              border: Border.all(color: const Color(0xFF4A90E2), width: 3),
                             ),
                             child: Text(
-                              '$num1 × $num2 = ?',
+                              '$num1 - $num2 = ?',
                               style: TextStyle(
                                 fontSize: isMobile ? 36 : 48,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
+                                fontFamily: 'ComicNeue',
                               ),
                             ),
                           ),
@@ -1686,12 +1725,12 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                               padding: EdgeInsets.all(isMobile ? 12 : 16),
                               margin: EdgeInsets.only(bottom: isMobile ? 10 : 15),
                               decoration: BoxDecoration(
-                                color: feedback.contains("CORRECT") 
+                                color: feedback.contains("Correct") 
                                     ? Colors.green.shade100 
                                     : Colors.red.shade100,
                                 borderRadius: BorderRadius.circular(15),
                                 border: Border.all(
-                                  color: feedback.contains("CORRECT") 
+                                  color: feedback.contains("Correct") 
                                       ? Colors.green 
                                       : Colors.red,
                                   width: 2,
@@ -1702,7 +1741,8 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                                 style: TextStyle(
                                   fontSize: isMobile ? 16 : 20,
                                   fontWeight: FontWeight.bold,
-                                  color: feedback.contains("CORRECT") 
+                                  fontFamily: 'ComicNeue',
+                                  color: feedback.contains("Correct") 
                                       ? Colors.green.shade800 
                                       : Colors.red.shade800,
                                 ),
@@ -1716,7 +1756,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFfdbb2d).withOpacity(0.3),
+                                  color: const Color(0xFFF8E71C).withOpacity(0.3),
                                   blurRadius: 10,
                                   spreadRadius: 2,
                                 ),
@@ -1731,23 +1771,27 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                               style: TextStyle(
                                 fontSize: isMobile ? 24 : 32,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'ComicNeue',
                               ),
                               decoration: InputDecoration(
                                 labelText: "Your Answer",
-                                labelStyle: const TextStyle(color: Color(0xFF8B4513)),
+                                labelStyle: const TextStyle(
+                                  color: Color(0xFF4A90E2),
+                                  fontFamily: 'ComicNeue',
+                                ),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  borderSide: const BorderSide(color: Color(0xFFfdbb2d), width: 3),
+                                  borderSide: const BorderSide(color: Color(0xFFF8E71C), width: 3),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  borderSide: const BorderSide(color: Color(0xFFfdbb2d), width: 3),
+                                  borderSide: const BorderSide(color: Color(0xFFF8E71C), width: 3),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  borderSide: const BorderSide(color: Color(0xFFb21f1f), width: 3),
+                                  borderSide: const BorderSide(color: Color(0xFF7ED321), width: 3),
                                 ),
                               ),
                               onSubmitted: (_) => _checkAnswer(),
@@ -1756,13 +1800,13 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
 
                           SizedBox(height: isMobile ? 20 : 30),
 
-                          // Submit Button - Avatar themed
+                          // Submit Button
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.green.withOpacity(0.4),
+                                  color: const Color(0xFF7ED321).withOpacity(0.4),
                                   blurRadius: 15,
                                   spreadRadius: 2,
                                 ),
@@ -1771,7 +1815,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                             child: ElevatedButton(
                               onPressed: _checkAnswer,
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green.shade600,
+                                backgroundColor: const Color(0xFF7ED321),
                                 padding: EdgeInsets.symmetric(
                                   horizontal: isMobile ? 40 : 60,
                                   vertical: isMobile ? 16 : 20,
@@ -1791,11 +1835,12 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                                   ),
                                   SizedBox(width: isMobile ? 8 : 12),
                                   Text(
-                                    'SUBMIT',
+                                    'CHECK ANSWER',
                                     style: TextStyle(
-                                      fontSize: isMobile ? 18 : 22,
+                                      fontSize: isMobile ? 16 : 20,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
+                                      fontFamily: 'ComicNeue',
                                     ),
                                   ),
                                 ],
@@ -1815,8 +1860,9 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                                   'Reset Game',
                                   style: TextStyle(
                                     fontSize: isMobile ? 14 : 16,
-                                    color: const Color(0xFF1a2a6c),
+                                    color: const Color(0xFF4A90E2),
                                     fontWeight: FontWeight.w600,
+                                    fontFamily: 'ComicNeue',
                                   ),
                                 ),
                               ),
@@ -1832,8 +1878,9 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                                   'Main Menu',
                                   style: TextStyle(
                                     fontSize: isMobile ? 14 : 16,
-                                    color: const Color(0xFF8B4513),
+                                    color: const Color(0xFF4A90E2),
                                     fontWeight: FontWeight.w600,
+                                    fontFamily: 'ComicNeue',
                                   ),
                                 ),
                               ),
@@ -1844,8 +1891,9 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
                                   'Exit to Gamify',
                                   style: TextStyle(
                                     fontSize: isMobile ? 14 : 16,
-                                    color: const Color(0xFFb21f1f),
+                                    color: const Color(0xFF4A90E2),
                                     fontWeight: FontWeight.w600,
+                                    fontFamily: 'ComicNeue',
                                   ),
                                 ),
                               ),
@@ -1879,24 +1927,25 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
           icon: const Icon(Icons.home, color: Colors.white, size: 20),
         ),
         
-        // Element badge and title
+        // Title
         Expanded(
           child: Column(
             children: [
               Text(
-                'AVATAR MATH',
+                'DORA MATH',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  fontFamily: 'Poppins',
+                  fontFamily: 'ComicNeue',
                 ),
               ),
               Text(
-                'Grade $grade',
+                'Grade $grade • Subtraction',
                 style: const TextStyle(
                   fontSize: 12,
                   color: Colors.white,
+                  fontFamily: 'ComicNeue',
                 ),
               ),
             ],
@@ -1925,28 +1974,14 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
             );
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF8B4513),
+            backgroundColor: const Color(0xFF4A90E2),
           ),
           icon: const Icon(Icons.home, size: 16, color: Colors.white),
-          label: const Text('MENU'),
-        ),
-        
-        // Element badge
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.white, width: 2),
-          ),
-          child: ClipOval(
-            child: Image.asset(
-              _getElementImage(grade),
-              fit: BoxFit.cover,
-              errorBuilder: (ctx, err, st) => Container(
-                color: _getElementColor(grade),
-                child: const Icon(Icons.ac_unit, color: Colors.white),
-              ),
+          label: const Text(
+            'MENU',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'ComicNeue',
             ),
           ),
         ),
@@ -1955,19 +1990,20 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
         Column(
           children: [
             Text(
-              'AVATAR MATH MASTERS',
+              'DORA SUBTRACTION ADVENTURE',
               style: TextStyle(
                 fontSize: isTablet ? 20 : 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontFamily: 'Poppins',
+                fontFamily: 'ComicNeue',
               ),
             ),
             Text(
-              'Grade $grade • ${_getElementName(grade)}',
+              'Grade $grade • ${_getDifficultyText(grade)}',
               style: TextStyle(
                 fontSize: isTablet ? 14 : 16,
                 color: Colors.white,
+                fontFamily: 'ComicNeue',
               ),
             ),
           ],
@@ -1977,10 +2013,16 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
         ElevatedButton.icon(
           onPressed: _openWebsite,
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF1a2a6c),
+            backgroundColor: const Color(0xFF4A90E2),
           ),
           icon: const Icon(Icons.exit_to_app, size: 16, color: Colors.white),
-          label: const Text('EXIT'),
+          label: const Text(
+            'EXIT',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'ComicNeue',
+            ),
+          ),
         ),
       ],
     );
@@ -2003,6 +2045,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
               fontSize: isMobile ? 12 : 14,
               fontWeight: FontWeight.bold,
               color: color,
+              fontFamily: 'ComicNeue',
             ),
           ),
           const SizedBox(width: 4),
@@ -2012,6 +2055,7 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
               fontSize: isMobile ? 14 : 16,
               fontWeight: FontWeight.bold,
               color: Colors.grey.shade800,
+              fontFamily: 'ComicNeue',
             ),
           ),
         ],
@@ -2019,24 +2063,9 @@ class _GamePageState extends State<GamePage> with SingleTickerProviderStateMixin
     );
   }
 
-  Color _getElementColor(int grade) {
-    if (grade <= 5) return const Color(0xFF1a2a6c);
-    if (grade <= 10) return const Color(0xFFb21f1f);
-    if (grade <= 15) return const Color(0xFF8B4513);
-    return const Color(0xFFfdbb2d);
-  }
-
-  String _getElementImage(int grade) {
-    if (grade <= 5) return 'assets/water_badge.jpg';
-    if (grade <= 10) return 'assets/fire_badge.jpg';
-    if (grade <= 15) return 'assets/earth_badge.jpg';
-    return 'assets/air_badge.jpg';
-  }
-
-  String _getElementName(int grade) {
-    if (grade <= 5) return 'WATER';
-    if (grade <= 10) return 'FIRE';
-    if (grade <= 15) return 'EARTH';
-    return 'AIR';
+  String _getDifficultyText(int grade) {
+    if (grade <= 10) return 'EASY';
+    if (grade <= 20) return 'MEDIUM';
+    return 'HARD';
   }
 }
